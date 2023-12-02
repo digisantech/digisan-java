@@ -4,11 +4,44 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a4b3e855-0b56-468c-8784-df0952bf288d" name="Changes" comment="" />
+    <list default="true" id="a4b3e855-0b56-468c-8784-df0952bf288d" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/digisan/TipoPessoa.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/digisan/model/Digisan.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/digisan/model/DigisanError.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/digisan/model/DigisanException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/digisan/model/DigisanRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/digisan/model/DigisanResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/digisan/model/Endereco.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/digisan/model/IndicadorExigibilidade.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/digisan/model/Model.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/digisan/model/Municipio.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/digisan/model/Pais.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/digisan/model/RestClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/digisan/model/nfse/Deducao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/digisan/model/nfse/Nfse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/digisan/model/nfse/Prestador.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/digisan/model/nfse/Servico.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/digisan/model/nfse/TipoDeducao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/digisan/model/nfse/Tomador.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/digisan/util/JSONUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -26,7 +59,11 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main"
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
