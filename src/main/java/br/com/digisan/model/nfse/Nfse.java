@@ -21,10 +21,9 @@ public class Nfse extends Model<String> {
     private String informacoesAdicionais;
     private Map<String, String> metadados = new HashMap<>();
 
-    public String enviar() throws DigisanException {
-        final DigisanRequest request = new DigisanRequest(HttpMethod.GET, "/nfse");
-        final JsonObject response = JSONUtils.getAsObject((JsonObject) request.execute(), JsonObject.class);
-        return response.get("id").getAsString();
+    public EnviarNfseResponse enviar() throws DigisanException {
+        final DigisanRequest request = new DigisanRequest(HttpMethod.POST, "/nfse");
+        return JSONUtils.getAsObject((JsonObject) request.execute(), EnviarNfseResponse.class);
     }
 
     public String getIdExterno() {
