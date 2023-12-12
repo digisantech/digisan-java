@@ -1,7 +1,11 @@
 package br.com.digisan.model;
 
+import com.google.gson.annotations.Expose;
+
 public class Municipio {
+    @Expose
     private String codigoIbge;
+    @Expose
     private String nome;
 
     public String getCodigoIbge() {

@@ -28,6 +28,13 @@ public class DigisanException extends Exception {
 
         final JsonObject responseError = JSONUtils.getInterpreter().fromJson(response.getBody(), JsonObject.class);
 
+        if (responseError.has("message")) {
+            final DigisanException exception = new DigisanException(responseError.get("message").getAsString(), responseError);
+            exception.returnCode = response.getCode();
+
+            return exception;
+        }
+
         final JsonArray errors = responseError.getAsJsonArray("mensagens");
 
         final StringBuilder joinedMessages = new StringBuilder();
@@ -61,9 +68,6 @@ public class DigisanException extends Exception {
         super(message);
 
         if (null != responseError) {
-            this.url = responseError.get("url").getAsString();
-            this.method = responseError.get("method").getAsString();
-
             if (responseError.has("mensagens")) {
                 final JsonArray errors = responseError.get("mensagens").getAsJsonArray();
 

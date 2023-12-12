@@ -1,5 +1,7 @@
 package br.com.digisan.model;
 
+import br.com.digisan.security.TLSSocketConnectionFactory;
+import br.com.digisan.security.TLSSocketFactory;
 import br.com.digisan.util.JSONUtils;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonSyntaxException;
@@ -8,11 +10,13 @@ import javax.net.ssl.HttpsURLConnection;
 import javax.ws.rs.core.UriBuilder;
 import javax.ws.rs.HttpMethod;
 import java.io.*;
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.Map;
 
 public class RestClient {
-    public final static String API_KEY = "api_key";
+    public final static String API_KEY = "x-api-key";
 
     private HttpsURLConnection httpClient;
 
@@ -27,6 +31,36 @@ public class RestClient {
     private boolean live;
 
     private InputStream is;
+
+    private static int getJavaVersion() {
+        String version = System.getProperty("java.version");
+        if(version.startsWith("1.")) {
+            version = version.substring(2, 3);
+        } else {
+            int dot = version.indexOf(".");
+            if(dot != -1) {
+                version = version.substring(0, dot);
+            }
+        }
+
+        return Integer.parseInt(version);
+    }
+
+    private void setupSecureConnection(final HttpsURLConnection httpClient) throws IOException,
+            NoSuchAlgorithmException, KeyManagementException, DigisanException {
+
+        int sysMajorVersion = RestClient.getJavaVersion();
+
+        if (sysMajorVersion < 6 || sysMajorVersion > 11) {
+            throw new DigisanException("Your installed Java version should be >= 6 and <= 11");
+        }
+
+        if (sysMajorVersion == 6) {
+            httpClient.setSSLSocketFactory(new TLSSocketConnectionFactory());
+        } else {
+            httpClient.setSSLSocketFactory(new TLSSocketFactory());
+        }
+    }
 
     public RestClient(final String method, final String url) throws DigisanException {
         this(method, url, null, null);
@@ -81,6 +115,8 @@ public class RestClient {
                 httpClient.setRequestMethod(this.method.toUpperCase());
                 httpClient.setDoInput(true);
                 httpClient.setDoOutput(false);
+
+                setupSecureConnection(httpClient);
 
                 if (headers.size() > 0) {
                     for (Map.Entry<String, String> entry : headers.entrySet()) {

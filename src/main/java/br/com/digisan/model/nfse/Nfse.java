@@ -5,6 +5,7 @@ import br.com.digisan.model.DigisanRequest;
 import br.com.digisan.model.Model;
 import br.com.digisan.util.JSONUtils;
 import com.google.gson.JsonObject;
+import com.google.gson.annotations.Expose;
 
 import java.time.LocalDate;
 import java.util.HashMap;
@@ -13,17 +14,41 @@ import javax.ws.rs.HttpMethod;
 
 public class Nfse extends Model<String> {
 
+    @Expose
     private String idExterno;
+
+    @Expose
     private LocalDate competencia;
+
+    @Expose
     private Prestador prestador;
+
+    @Expose
     private Tomador tomador;
+
+    @Expose
     private Servico servico;
+
+    @Expose
     private String informacoesAdicionais;
-    private Map<String, String> metadados = new HashMap<>();
+
+    @Expose
+    private Map<String, String> metadados;
+
+    public void solicitarCancelamento(final String id, CodigoCancelamento codigoCancelamento, String motivo) throws DigisanException {
+        final DigisanRequest request = new DigisanRequest(HttpMethod.POST, "/nfse/cancelar/" + id);
+        Map parameters = new HashMap<>();
+        parameters.put("codigo", codigoCancelamento.getCodigo());
+        parameters.put("motivo", motivo);
+        request.setParameters(parameters);
+        request.execute();
+    }
 
     public EnviarNfseResponse enviar() throws DigisanException {
         final DigisanRequest request = new DigisanRequest(HttpMethod.POST, "/nfse");
-        return JSONUtils.getAsObject((JsonObject) request.execute(), EnviarNfseResponse.class);
+        request.setParameters(JSONUtils.objectToMap(this));
+        JsonObject executed = (JsonObject) request.execute();
+        return JSONUtils.getAsObject(executed, EnviarNfseResponse.class);
     }
 
     public String getIdExterno() {

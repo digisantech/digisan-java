@@ -1,6 +1,9 @@
 package br.com.digisan.model.nfse;
 
+import com.google.gson.annotations.Expose;
+
 public class Prestador {
+    @Expose
     public String cnpj;
 
     public Prestador(String cnpj) {

@@ -1,26 +1,60 @@
 package br.com.digisan.model.nfse;
 
 import br.com.digisan.model.IndicadorExigibilidade;
+import com.google.gson.annotations.Expose;
 
 import java.math.BigDecimal;
 
 public class Servico {
+    @Expose
     private String descricao;
+
+    @Expose
     private String cnae;
+
+    @Expose
     private String codigoMunicipio;
+
+    @Expose
     private String codigoMunicipioIncidencia;
+
+    @Expose
     private String itemListaServicoLC116;
+
+    @Expose
     private String codigoTributacaoMunicipio;
+
+    @Expose
     private IndicadorExigibilidade indicadorExigibilidade;
+
+    @Expose
     private boolean issRetido;
+
+    @Expose
     private BigDecimal valorServicos;
+
+    @Expose
     private BigDecimal descontoCondicionado;
+
+    @Expose
     private BigDecimal descontoIncondicionado;
+
+    @Expose
     private BigDecimal aliquotaIss;
+
+    @Expose
     private BigDecimal valorIss;
+
+    @Expose
     private BigDecimal valorCofins;
+
+    @Expose
     private BigDecimal valorCsll;
+
+    @Expose
     private BigDecimal valorIr;
+
+    @Expose
     private BigDecimal valorPis;
 
     public String getDescricao() {

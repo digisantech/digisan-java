@@ -4,16 +4,22 @@ import br.com.digisan.model.*;
 import br.com.digisan.model.nfse.*;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.util.UUID;
 
 public class Main {
     public static void main(String[] args) throws DigisanException {
-        Digisan.init("api_key_123131331");
+        Digisan.init("ak_live_123");
+        cancelar();
+//        emiteNfse();
+    }
 
+    private static void cancelar() throws DigisanException {
+        new Nfse().solicitarCancelamento("6578bfcd6e90483806e117ea", CodigoCancelamento.SERVICO_NAO_PRESTADO, "Nota emitida para testes");
+    }
+
+    private static void emiteNfse() throws DigisanException {
         Nfse nfse = new Nfse();
         nfse.setIdExterno(UUID.randomUUID().toString());
-        nfse.setCompetencia(LocalDate.now());
         nfse.setPrestador(new Prestador("03610650000147"));
         Tomador tomador = new Tomador();
         tomador.setNome("Lucas da Silva Moreira");

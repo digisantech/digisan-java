@@ -4,6 +4,9 @@ import com.google.gson.*;
 
 import java.lang.reflect.Type;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+import com.google.gson.reflect.TypeToken;
 
 public class JSONUtils {
     public static final Gson getInterpreter() {
@@ -22,10 +25,16 @@ public class JSONUtils {
         return getNewDefaultGsonBuilder().create().toJson(object);
     }
 
+    public static Map<String, Object> objectToMap(Object object) {
+        GsonBuilder builder = getNewDefaultGsonBuilder();
+        final String json = builder.create().toJson(object);
+        return builder.create().fromJson(json, new TypeToken<HashMap<String, Object>>() {
+        }.getType());
+    }
+
     private static GsonBuilder getNewDefaultGsonBuilder(){
         return new GsonBuilder()
                 .excludeFieldsWithoutExposeAnnotation()
-                .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
                 .setExclusionStrategies(new ExclusionStrategy(){
 
                     public boolean shouldSkipClass(Class<?> clazz) {

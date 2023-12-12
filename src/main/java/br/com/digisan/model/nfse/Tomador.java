@@ -2,16 +2,34 @@ package br.com.digisan.model.nfse;
 
 import br.com.digisan.TipoPessoa;
 import br.com.digisan.model.Endereco;
+import com.google.gson.annotations.Expose;
 
 public class Tomador {
+    @Expose
     private String nome;
+
+    @Expose
     private String cpfCnpj;
+
+    @Expose
     private String codigoEstrangeiro;
+
+    @Expose
     private String inscricaoEstadual;
+
+    @Expose
     private String inscricaoMunicipal;
+
+    @Expose
     private String telefone;
+
+    @Expose
     private String email;
+
+    @Expose
     private TipoPessoa tipoPessoa;
+
+    @Expose
     private Endereco endereco;
 
     public String getNome() {

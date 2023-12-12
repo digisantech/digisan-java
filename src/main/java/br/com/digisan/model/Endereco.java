@@ -1,14 +1,31 @@
 package br.com.digisan.model;
 
+import com.google.gson.annotations.Expose;
+
 public class Endereco {
 
+    @Expose
     private String uf;
+
+    @Expose
     private Municipio municipio;
+
+    @Expose
     private String logradouro;
+
+    @Expose
     private String complemento;
+
+    @Expose
     private String numero;
+
+    @Expose
     private String bairro;
+
+    @Expose
     private String cep;
+
+    @Expose
     private Pais pais;
 
     public String getUf() {
