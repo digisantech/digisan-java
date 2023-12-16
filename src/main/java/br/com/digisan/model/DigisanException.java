@@ -43,6 +43,8 @@ public class DigisanException extends Exception {
         for (i = 0; i < errors.size(); i++) {
             final JsonObject error = errors.get(i).getAsJsonObject();
             joinedMessages
+                    .append(error.get("field").getAsString())
+                    .append(" - ")
                     .append(error.get("message").getAsString())
                     .append("\n");
         }
