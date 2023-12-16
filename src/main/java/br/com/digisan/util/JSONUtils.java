@@ -3,6 +3,7 @@ package br.com.digisan.util;
 import com.google.gson.*;
 
 import java.lang.reflect.Type;
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -10,11 +11,13 @@ import com.google.gson.reflect.TypeToken;
 
 public class JSONUtils {
     public static final Gson getInterpreter() {
-        return getNewDefaultGsonBuilder().create();
+        GsonBuilder gsonBuilder = getNewDefaultGsonBuilder().registerTypeAdapter(LocalDate.class, new LocalDateAdapter());
+        return gsonBuilder.create();
     }
 
     public static <T> T getAsObject(JsonObject json, Class<T> clazz) {
-        return getNewDefaultGsonBuilder().create().fromJson(json, clazz);
+        GsonBuilder builder = getNewDefaultGsonBuilder().registerTypeAdapter(LocalDate.class, new LocalDateAdapter());
+        return builder.create().fromJson(json, clazz);
     }
 
     public static <T> Collection<T> getAsList(JsonArray json, Type listType) {
@@ -22,11 +25,12 @@ public class JSONUtils {
     }
 
     public static String getAsJson(Object object) {
-        return getNewDefaultGsonBuilder().create().toJson(object);
+        GsonBuilder builder = getNewDefaultGsonBuilder().registerTypeAdapter(LocalDate.class, new LocalDateAdapter());
+        return builder.create().toJson(object);
     }
 
     public static Map<String, Object> objectToMap(Object object) {
-        GsonBuilder builder = getNewDefaultGsonBuilder();
+        GsonBuilder builder = getNewDefaultGsonBuilder().registerTypeAdapter(LocalDate.class, new LocalDateAdapter());;
         final String json = builder.create().toJson(object);
         return builder.create().fromJson(json, new TypeToken<HashMap<String, Object>>() {
         }.getType());
