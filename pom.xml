@@ -6,7 +6,7 @@
     <groupId>br.com.digisan</groupId>
     <artifactId>digisan-java</artifactId>
     <version>1.0.9</version>
-    <name>digisan-nava</name>
+    <name>digisan-java</name>
     <description>DIGISAN Java Bindins</description>
     <url>https://github.com/digisantech/digisan-java</url>
     <organization>
