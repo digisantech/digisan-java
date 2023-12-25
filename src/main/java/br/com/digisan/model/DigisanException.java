@@ -42,10 +42,12 @@ public class DigisanException extends Exception {
         int i;
         for (i = 0; i < errors.size(); i++) {
             final JsonObject error = errors.get(i).getAsJsonObject();
-            if (error.has("field")) {
-                joinedMessages
-                    .append(error.get("field").getAsString())
-                        .append(" - ");
+            if (error.has("field") && error.get("field") != null) {
+                try {
+                    joinedMessages
+                            .append(error.get("field").getAsString())
+                            .append(" - ");
+                } catch (Exception e) {}
             }
             joinedMessages
                     .append(error.get("message").getAsString())
